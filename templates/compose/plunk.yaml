@@ -26,6 +26,7 @@ services:
       - API_URI=${SERVICE_FQDN_PLUNK}/api
       - DISABLE_SIGNUPS=${DISABLE_SIGNUPS:-False}
       - NODE_OPTIONS=--no-network-family-autoselection
+      - VERCEL_UNDICI=1
     entrypoint: [ "/app/entry.sh" ]
     healthcheck:
       test: ["CMD-SHELL", "(wget -S --spider http://127.0.0.1:3000/api/health 2>&1 | grep -q \"HTTP/1.1 [1-3]\")"]
